@@ -102,7 +102,7 @@ function Banner(props) {
         }
       >
         <div className="ml-12 -translate-x-32 group-hover:translate-x-0 duration-300 transition-all ease-in">
-          <div className="text-7xl text-white font-extrabold">随便逛逛</div>
+          <div className="text-4xl text-white font-extrabold">Random Post</div>
           <div className="-ml-3 text-gray-300">
             <ArrowSmallRight className={'w-24 h-24 stroke-2'} />
           </div>
@@ -367,7 +367,7 @@ function TodayCard({ cRef }) {
               className={'w-6 h-6 mr-2 bg-white rounded-full stroke-indigo-400'}
             />
             <div id="more" className="select-none">
-              更多推荐
+              Recent Article
             </div>
           </div>
         </div>
@@ -378,7 +378,7 @@ function TodayCard({ cRef }) {
           } cursor-pointer today-card-cover absolute w-full h-full top-0`}
           style={{
             background:
-              "url('https://bu.dusays.com/2023/03/12/640dcd3a1b146.png') no-repeat center /cover"
+              "url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600') no-repeat center /cover"
           }}
         ></div>
       </div>
