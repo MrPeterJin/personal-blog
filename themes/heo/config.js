@@ -13,7 +13,7 @@ const CONFIG = {
   HERO_TITLE_3: '',
   HERO_TITLE_4: 'Misc.',
   HERO_TITLE_5: 'Gallery',
-  HERO_TITLE_LINK: 'https://www.petergam.top/article/gallery.html',
+  HERO_TITLE_LINK: 'https://blog.petergam.top/article/gallery.html',
 
   // 英雄区显示三个置顶分类
   HERO_CATEGORY_1: { title: 'Research', url: '/tag/Research' },
