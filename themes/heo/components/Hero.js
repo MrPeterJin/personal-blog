@@ -253,7 +253,7 @@ function TopGroup(props) {
           )
         })}
       </div>
-      <TodayCard cRef={todayCardRef} />
+      <TodayCard cRef={todayCardRef} siteInfo={siteInfo}/>
     </div>
   )
 }
@@ -301,7 +301,7 @@ function getTopPosts({ latestPosts, allNavPages }) {
  * 英雄区右侧，今日卡牌
  * @returns
  */
-function TodayCard({ cRef }) {
+function TodayCard({ cRef, siteInfo }) {
   const router = useRouter()
   // 卡牌是否盖住下层
   const [isCoverUp, setIsCoverUp] = useState(true)
