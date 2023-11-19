@@ -4,32 +4,32 @@ const CONFIG = {
   HEO_SITE_CREATE_TIME: '2021-09-21', // 建站日期，用于计算网站运行的第几天
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
-  NOTICE_BAR: [
+  HEO_NOTICE_BAR: [
   ],
 
   // 英雄区(首页顶部大卡)
-  HERO_TITLE_1: 'My',
-  HERO_TITLE_2: 'Skills',
-  HERO_TITLE_3: '',
-  HERO_TITLE_4: 'Misc.',
-  HERO_TITLE_5: 'Gallery',
-  HERO_TITLE_LINK: 'https://blog.petergam.top/article/gallery.html',
+  HEO_HERO_TITLE_1: 'My',
+  HEO_HERO_TITLE_2: 'Skills',
+  HEO_HERO_TITLE_3: '',
+  HEO_HERO_TITLE_4: 'Misc.',
+  HEO_HERO_TITLE_5: 'Gallery',
+  HEO_HERO_TITLE_LINK: 'https://blog.petergam.top/article/gallery.html',
 
   // 英雄区显示三个置顶分类
-  HERO_CATEGORY_1: { title: 'Research', url: '/tag/Research' },
-  HERO_CATEGORY_2: { title: 'Tech', url: '/tag/Tech' },
-  HERO_CATEGORY_3: { title: 'Travel', url: '/tag/Travel' },
+  HEO_HERO_CATEGORY_1: { title: 'Research', url: '/tag/Research' },
+  HEO_HERO_CATEGORY_2: { title: 'Tech', url: '/tag/Tech' },
+  HEO_HERO_CATEGORY_3: { title: 'Travel', url: '/tag/Travel' },
 
   // 英雄区右侧推荐文章标签, 例如 [推荐] , 最多六篇文章; 若留空白''，则推荐最近更新文章
-  HERO_RECOMMEND_POST_TAG: '',
-  HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME: false, // 推荐文章排序，为`true`时将强制按最后修改时间倒序
+  HEO_HERO_RECOMMEND_POST_TAG: '',
+  HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME: false, // 推荐文章排序，为`true`时将强制按最后修改时间倒序
   //   HERO_RECOMMEND_COVER: 'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg', // 英雄区右侧图片
 
   // 右侧个人资料卡牌欢迎语，点击可自动切换
-  INFOCARD_GREETINGS: [
+  HEO_INFOCARD_GREETINGS: [
     'Hi！I am',
   ],
-  INFO_CARD_URL: 'https://github.com/MrPeterJin', // 个人资料底部按钮链接
+  HEO_INFO_CARD_URL: 'https://github.com/MrPeterJin', // 个人资料底部按钮链接
 
   // 用户技能图标
   HEO_GROUP_ICONS: [
