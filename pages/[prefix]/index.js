@@ -82,7 +82,7 @@ export async function getStaticPaths() {
 
   const from = 'slug-paths'
   const { allPages } = await getGlobalData({ from })
-  const paths = allPages?.filter(row => row.slug.indexOf('/') > 0 && !checkContainHttp(row.slug) && row.type.indexOf('Menu') < 0)
+  const paths = allPages?.filter(row => checkSlug(row))
     .map(row => ({ params: { prefix: row.slug } }))
   return {
     paths: paths,
@@ -101,7 +101,7 @@ export async function getStaticProps({ params: { prefix } }) {
   const props = await getGlobalData({ from })
   // 在列表内查找文章
   props.post = props?.allPages?.find((p) => {
-    return p.slug === fullSlug || p.id === idToUuid(fullSlug)
+    return (p.type.indexOf('Menu') < 0) && (p.slug === fullSlug || p.id === idToUuid(fullSlug))
   })
 
   // 处理非列表内文章的内信息
@@ -181,6 +181,14 @@ export function getRecommendPost(post, allPosts, count = 6) {
     recommendPosts = recommendPosts.slice(0, count)
   }
   return recommendPosts
+}
+
+function checkSlug(row) {
+  let slug = row.slug
+  if (slug.startsWith('/')) {
+    slug = slug.substring(1)
+  }
+  return ((slug.match(/\//g) || []).length === 0 && !checkContainHttp(slug)) && row.type.indexOf('Menu') < 0
 }
 
 export default Slug
