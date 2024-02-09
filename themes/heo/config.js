@@ -18,7 +18,7 @@ const CONFIG = {
   HEO_HERO_TITLE_3: '',
   HEO_HERO_TITLE_4: 'Misc.',
   HEO_HERO_TITLE_5: 'Gallery',
-  HEO_HERO_TITLE_LINK: 'https://blog.petergam.top/article/gallery.html',
+  HEO_HERO_TITLE_LINK: 'https://blog.peterkam.top/article/gallery.html',
 
   // 英雄区显示三个置顶分类
   HEO_HERO_CATEGORY_1: { title: 'Research', url: '/tag/Research' },
