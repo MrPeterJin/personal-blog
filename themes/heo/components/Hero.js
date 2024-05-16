@@ -97,10 +97,11 @@ function Banner(props) {
         style={{ backdropFilter: 'blur(15px)' }}
         className={
           'rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 duration-300 transition-all bg-[#4259efdd] dark:bg-[#dca846] dark:text-white cursor-pointer absolute w-full h-full top-0 flex justify-start items-center'
-        }>
-        <div className='ml-12 -translate-x-32 group-hover:translate-x-0 duration-300 transition-all ease-in'>
-          <div className='text-4xl text-white font-extrabold'>Random Post</div>
-          <div className='-ml-3 text-gray-300'>
+        }
+      >
+        <div className="ml-12 -translate-x-32 group-hover:translate-x-0 duration-300 transition-all ease-in">
+          <div className="text-7xl text-white font-extrabold">随便逛逛</div>
+          <div className="-ml-3 text-gray-300">
             <ArrowSmallRight className={'w-24 h-24 stroke-2'} />
           </div>
         </div>
@@ -115,7 +116,9 @@ function Banner(props) {
  */
 function TagsGroupBar() {
   const groupIcons = siteConfig('HEO_GROUP_ICONS', null, CONFIG).concat(
+    
     siteConfig('HEO_GROUP_ICONS', null, CONFIG)
+  
   )
 
   return (
