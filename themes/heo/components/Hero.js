@@ -2,6 +2,7 @@
 import { ArrowSmallRight, PlusSmall } from '@/components/HeroIcons'
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
@@ -209,6 +210,7 @@ function GroupMenu() {
  */
 function TopGroup(props) {
   const { latestPosts, allNavPages, siteInfo } = props
+  const { locale } = useGlobal()
   const todayCardRef = useRef()
   function handleMouseLeave() {
     todayCardRef.current.coverUp()
@@ -248,6 +250,7 @@ function TopGroup(props) {
           )
         })}
       </div>
+      {/* 一个大的跳转文章卡片 */}
       <TodayCard cRef={todayCardRef} siteInfo={siteInfo} />
     </div>
   )
@@ -307,6 +310,7 @@ function getTopPosts({ latestPosts, allNavPages }) {
 function TodayCard({ cRef, siteInfo }) {
   const router = useRouter()
   const link = siteConfig('HEO_HERO_TITLE_LINK', null, CONFIG)
+  const { locale } = useGlobal()
   // 卡牌是否盖住下层
   const [isCoverUp, setIsCoverUp] = useState(true)
 
@@ -322,10 +326,10 @@ function TodayCard({ cRef, siteInfo }) {
   })
 
   /**
-   * 点击更多
+   * 查看更多
    * @param {*} e
    */
-  function handleClickMore(e) {
+  function handleClickShowMore(e) {
     e.stopPropagation()
     setIsCoverUp(false)
   }
@@ -350,10 +354,11 @@ function TodayCard({ cRef, siteInfo }) {
           isCoverUp
             ? 'opacity-100 cursor-pointer'
             : 'opacity-0 transform scale-110 pointer-events-none'
-        } shadow transition-all duration-200 today-card h-full bg-[#0E57D5] rounded-xl relative overflow-hidden flex items-end`}>
+        } shadow transition-all duration-200 today-card h-full bg-black rounded-xl relative overflow-hidden flex items-end`}>
+        {/* 卡片文字信息 */}
         <div
           id='today-card-info'
-          className='z-10 flex justify-between w-full relative text-white p-10 items-end'>
+          className='flex justify-between w-full relative text-white p-10 items-end'>
           <div className='flex flex-col'>
             <div className='text-xs font-light'>
               {siteConfig('HEO_HERO_TITLE_4', null, CONFIG)}
@@ -362,20 +367,26 @@ function TodayCard({ cRef, siteInfo }) {
               {siteConfig('HEO_HERO_TITLE_5', null, CONFIG)}
             </div>
           </div>
+          {/* 查看更多的按钮 */}
           <div
-            onClick={handleClickMore}
-            className={`'${
-              isCoverUp ? '' : 'hidden pointer-events-none '
-            } flex items-center px-3 h-10 justify-center bg-[#425aef] hover:bg-[#4259efcb] transition-colors duration-100 rounded-3xl`}>
+            onClick={handleClickShowMore}
+            className={`'${isCoverUp ? '' : 'hidden pointer-events-none'} z-10 group flex items-center px-3 h-10 justify-center  rounded-3xl
+            glassmorphism transition-colors duration-100 `}>
             <PlusSmall
-              className={'w-6 h-6 mr-2 bg-white rounded-full stroke-indigo-400'}
+              className={
+                'group-hover:rotate-180 duration-500 transition-all w-6 h-6 mr-2 bg-white rounded-full stroke-black'
+              }
             />
             <div id='more' className='select-none'>
               Recent Article
             </div>
           </div>
         </div>
-        <div
+
+        {/* 封面图 */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={siteInfo?.pageCover}
           id='today-card-cover'
           className={`${
             isCoverUp ? '' : ' pointer-events-none'
