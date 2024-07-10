@@ -34,10 +34,12 @@ const CONFIG = {
   HEO_INFOCARD_GREETINGS: [
     'Hi！I am',
   ],
-  HEO_INFO_CARD_URL1: 'https://github.com/MrPeterJin', // 个人资料底部按钮链接
-  HEO_INFO_CARD_URL2: 'https://academic.peterkam.top', // 个人资料底部按钮链接
   
-
+  HEO_INFO_CARD_URL1: 'https://github.com/MrPeterJin', // 个人资料底部按钮链接
+  HEO_INFO_CARD_ICON1: 'fas fa-user',
+  HEO_INFO_CARD_URL2: 'https://academic.peterkam.top', // 个人资料底部按钮链接
+  HEO_INFO_CARD_ICON2: 'fab fa-github',
+  
   // 用户技能图标
   HEO_GROUP_ICONS: [
     {
