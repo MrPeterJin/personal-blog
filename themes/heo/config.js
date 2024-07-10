@@ -36,9 +36,9 @@ const CONFIG = {
   ],
 
   HEO_INFO_CARD_URL1: 'https://github.com/MrPeterJin', // 个人资料底部按钮链接
-  HEO_INFO_CARD_ICON1: 'fas fa-github',
+  HEO_INFO_CARD_ICON1: 'fab fa-github',
   HEO_INFO_CARD_URL2: 'https://academic.peterkam.top', // 个人资料底部按钮链接
-  HEO_INFO_CARD_ICON2: 'fab fa-user',
+  HEO_INFO_CARD_ICON2: 'fas fa-user',
   
   // 用户技能图标
   HEO_GROUP_ICONS: [
