@@ -385,7 +385,7 @@ function TodayCard({ cRef, siteInfo }) {
               }
             />
             <div id='more' className='select-none'>
-              Recent Article
+              {locale.COMMON.RECOMMEND_POSTS}
             </div>
           </div>
         </div>
