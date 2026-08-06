@@ -420,6 +420,11 @@ const nextConfig = {
       __dirname,
       'lib/utils/throttle.js'
     )
+    if (isServer) {
+      config.resolve.alias['next/navigation'] = require.resolve(
+        'next/dist/esm/api/navigation.react-server.js'
+      )
+    }
 
     if (!isServer) {
       console.log(
