@@ -1,11 +1,20 @@
 import BLOG, { LAYOUT_MAPPINGS } from '@/blog.config'
-import getConfig from 'next/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { getQueryParam, getQueryVariable, isBrowser } from '../lib/utils'
 
+const resolveThemes = () => {
+  try {
+    const parsed = JSON.parse(process.env.NEXT_PUBLIC_THEMES || '[]')
+    if (Array.isArray(parsed) && parsed.length) {
+      return parsed
+    }
+  } catch (_) {}
+  return [BLOG.THEME]
+}
+
 // 在next.config.js中扫描所有主题
-export const { THEMES = [] } = getConfig()?.publicRuntimeConfig || {}
+export const THEMES = resolveThemes()
 const baseLayoutCache = new Map()
 const layoutByThemeCache = new Map()
 let domFixTimer = null
