@@ -47,4 +47,33 @@ describe('adjustPageProperties', () => {
     expect(plainPage.slug).toBe('a-book')
     expect(plainPage.href).toBe('/a-book')
   })
+
+  it('normalizes precomputed digest password to lowercase', () => {
+    const digestPage = {
+      id: 'digest-page',
+      type: 'Post',
+      slug: 'digest-post',
+      password:
+        'AABBCCDDEEFF00112233445566778899AABBCCDDEEFF00112233445566778899'
+    }
+
+    adjustPageProperties(digestPage, {})
+
+    expect(digestPage.password).toBe(
+      'aabbccddeeff00112233445566778899aabbccddeeff00112233445566778899'
+    )
+  })
+
+  it('normalizes legacy md5 password to lowercase', () => {
+    const legacyPage = {
+      id: 'legacy-page',
+      type: 'Post',
+      slug: 'legacy-post',
+      password: 'AABBCCDDEEFF00112233445566778899'
+    }
+
+    adjustPageProperties(legacyPage, {})
+
+    expect(legacyPage.password).toBe('aabbccddeeff00112233445566778899')
+  })
 })
