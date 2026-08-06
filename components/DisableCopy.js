@@ -1,9 +1,5 @@
-import { siteConfig } from '@/lib/config'
 import { useEffect } from 'react'
 
-/**
- * 禁止用户拷贝文章的插件
- */
 export default function DisableCopy() {
   useEffect(() => {
     if (!JSON.parse(siteConfig('CAN_COPY'))) {
