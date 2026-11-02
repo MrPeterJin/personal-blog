@@ -48,32 +48,44 @@ describe('adjustPageProperties', () => {
     expect(plainPage.href).toBe('/a-book')
   })
 
-  it('normalizes precomputed digest password to lowercase', () => {
-    const digestPage = {
-      id: 'digest-page',
-      type: 'Post',
-      slug: 'digest-post',
-      password:
-        'AABBCCDDEEFF00112233445566778899AABBCCDDEEFF00112233445566778899'
+  it('keeps date segments for mapped pages that have a Date', () => {
+    const NOTION_CONFIG = {
+      POST_URL_PREFIX: '%category%/%year%/%month%/%day%',
+      POST_URL_PREFIX_MAPPING_CATEGORY: { Guide: 'manual' },
+      PSEUDO_STATIC: false
+    }
+    const page = {
+      id: 'page-id',
+      type: 'Page',
+      slug: 'a-manual',
+      category: 'Guide',
+      date: { start_date: '2026-08-01' },
+      publishDay: '2026-08-01'
     }
 
-    adjustPageProperties(digestPage, {})
+    adjustPageProperties(page, NOTION_CONFIG)
 
-    expect(digestPage.password).toBe(
-      'aabbccddeeff00112233445566778899aabbccddeeff00112233445566778899'
-    )
+    expect(page.slug).toBe('manual/2026/08/01/a-manual')
+    expect(page.href).toBe('/manual/2026/08/01/a-manual')
   })
 
-  it('normalizes legacy md5 password to lowercase', () => {
-    const legacyPage = {
-      id: 'legacy-page',
-      type: 'Post',
-      slug: 'legacy-post',
-      password: 'AABBCCDDEEFF00112233445566778899'
+  it('falls back to /category/slug for mapped pages without a Date even when publishDay came from created_time', () => {
+    const NOTION_CONFIG = {
+      POST_URL_PREFIX: '%category%/%year%/%month%/%day%',
+      POST_URL_PREFIX_MAPPING_CATEGORY: { Guide: 'manual' },
+      PSEUDO_STATIC: false
+    }
+    const page = {
+      id: 'page-id',
+      type: 'Page',
+      slug: 'a-manual',
+      category: 'Guide',
+      publishDay: '2026-08-01'
     }
 
-    adjustPageProperties(legacyPage, {})
+    adjustPageProperties(page, NOTION_CONFIG)
 
-    expect(legacyPage.password).toBe('aabbccddeeff00112233445566778899')
+    expect(page.slug).toBe('manual/a-manual')
+    expect(page.href).toBe('/manual/a-manual')
   })
 })

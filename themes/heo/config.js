@@ -25,6 +25,7 @@ const CONFIG = {
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   HEO_NOTICE_BAR: [
   ],
+  HEO_NOTICE_BAR_INTERVAL: 3000, // 多条通知的切换间隔，单位毫秒；非正数或无效值回退为 3000
 
   // 英雄区左右侧组件颠倒位置
   HEO_HERO_REVERSE: false,
